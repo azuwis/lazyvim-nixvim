@@ -1,7 +1,7 @@
 {
   description = "Setup LazyVim using NixVim";
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
   inputs.nixvim.url = "github:nix-community/nixvim";
   inputs.nixvim.inputs.nixpkgs.follows = "nixpkgs";
   inputs.nixvim.inputs.flake-parts.follows = "flake-parts";
@@ -39,49 +39,42 @@
                   cmp-buffer
                   cmp-nvim-lsp
                   cmp-path
-                  cmp_luasnip
                   conform-nvim
                   dashboard-nvim
                   dressing-nvim
                   flash-nvim
                   friendly-snippets
                   gitsigns-nvim
+                  grug-far-nvim
                   indent-blankline-nvim
+                  lazydev-nvim
                   lualine-nvim
+                  luvit-meta
                   neo-tree-nvim
-                  neoconf-nvim
-                  neodev-nvim
                   noice-nvim
                   nui-nvim
                   nvim-cmp
                   nvim-lint
                   nvim-lspconfig
                   nvim-notify
-                  nvim-spectre
+                  nvim-snippets
                   nvim-treesitter
-                  nvim-treesitter-context
                   nvim-treesitter-textobjects
                   nvim-ts-autotag
-                  nvim-ts-context-commentstring
-                  nvim-web-devicons
                   persistence-nvim
                   plenary-nvim
+                  snacks-nvim
                   telescope-fzf-native-nvim
                   telescope-nvim
                   todo-comments-nvim
                   tokyonight-nvim
                   trouble-nvim
-                  vim-illuminate
-                  vim-startuptime
+                  ts-comments-nvim
                   which-key-nvim
-                  { name = "LuaSnip"; path = luasnip; }
                   { name = "catppuccin"; path = catppuccin-nvim; }
                   { name = "mini.ai"; path = mini-nvim; }
-                  { name = "mini.bufremove"; path = mini-nvim; }
-                  { name = "mini.comment"; path = mini-nvim; }
-                  { name = "mini.indentscope"; path = mini-nvim; }
+                  { name = "mini.icons"; path = mini-nvim; }
                   { name = "mini.pairs"; path = mini-nvim; }
-                  { name = "mini.surround"; path = mini-nvim; }
                 ];
                 mkEntryFromDrv = drv:
                   if lib.isDerivation drv then
@@ -113,7 +106,7 @@
                     -- uncomment to import/override with your plugins
                     -- { import = "plugins" },
                     -- put this line at the end of spec to clear ensure_installed
-                    { "nvim-treesitter/nvim-treesitter", opts = { ensure_installed = {} } },
+                    { "nvim-treesitter/nvim-treesitter", opts = function(_, opts) opts.ensure_installed = {} end },
                   },
                 })
               '';
