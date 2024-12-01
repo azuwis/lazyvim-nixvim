@@ -20,6 +20,11 @@
       perSystem = { pkgs, lib, system, ... }:
         let
           config = {
+            # Reduce closure size
+            enableMan = false;
+            withPython3 = false;
+            withRuby = false;
+
             extraPackages = with pkgs; [
               # LazyVim
               lua-language-server
