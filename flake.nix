@@ -90,7 +90,7 @@
                   dev = {
                     -- reuse files from pkgs.vimPlugins.*
                     path = "${lazyPath}",
-                    patterns = { "." },
+                    patterns = { "" },
                     -- fallback to download
                     fallback = true,
                   },
